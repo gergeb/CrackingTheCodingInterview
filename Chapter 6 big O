@@ -1,0 +1,34 @@
+Excercises
+
+1. o(N) 
+2. o(N)
+3. o(1)
+4. o(N)
+5. o(logN)
+6. o(sqrt(N))
+7. I had to look here https://www.quora.com/What-is-the-worse-case-time-complexity-for-a-binary-search-tree-for-searching/answer/Daniel-R-Page
+  o(N)
+8. o(N)?
+9.o(N^2)
+10. o(N)?
+11. o(N log N)
+12. merge sort = o(logN), binarySearch = o(logN)
+o (logA+logB) ?
+
+Answers
+1. correct
+2. correct
+3. correct
+4. o(a/b) apparently
+5. correct
+6. correct
+7. correct
+ 8. correct
+ 9 correct
+ 10. o(logN)
+ 11. o(kc^K)
+ 12. o(alogA + blogB)
+ 
+ Conclusion - need to find more excercises on o (N) to do. I have understood it,
+ but more could be done.
+ 
