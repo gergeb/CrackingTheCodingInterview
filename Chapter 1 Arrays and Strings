@@ -26,5 +26,106 @@ static boolean isUniqueNoStructures(String s) {
   
   2.Given two strings, write a method to decide if one is a permutation of the
 other. 
+I didnt get this one, had to look at the answer. Didnt realise you were allowed to just do arrays.sort on a character array.
+I actually did think of doing that
 
+3. Write a method to replace all spaces in a string with '%20'. You may assume that the string
+has sufficient space at the end to hold the additional characters, and that you are given the "true"
+length of the string. (Note: If implementing in Java, please use a character array so that you can
+perform this operation in place.) 
+
+static String toUrl(String s, int length) {
+		StringBuilder url = new StringBuilder();
+		for (int i = 0; i <=length ; i++) {
+			if (s.charAt(i)==' ') {
+				url.append("%20");
+			} else {
+				url.append(s.charAt(i));
+			}
+		}
+		return url.toString();
+	}
+	
+	ok so i didnt realise that we had to modify the string directly. i do not see the point in doing it like that,
+	I actually did something similar to this at work to fix some corrupted characters from our database replication
+	from sybsase to mysql.
+	
+4.  Given a string, write a function to check if it is a permutation of a palindrome.
+A palindrome is a word or phrase that is the same forwards and backwards. A permutation
+is a rearrangement of letters. The palindrome does not need to be limited to just dictionary words. 
+
+static boolean isPalindromePermutation(String s) {
+		Map<Character, Integer> letterCountMap = new HashMap<>();
+		for (Character c : s.toCharArray()) {
+			if (letterCountMap.get(c) != null) {
+				letterCountMap.replace(c, letterCountMap.get(c) + 1);
+			} else {
+				letterCountMap.put(c, 1);
+			}
+		}
+		int count = 0;
+		for (Integer i : letterCountMap.values()) {
+			if (i % 2 != 0) {
+				count++;
+			}
+		}
+		System.out.println(letterCountMap);
+		if (count > 1) {
+			return false;
+		} else {
+			return true;
+		}
+	} 
+	
+	
+5.  There are three types of edits that can be performed on strings: insert a character,
+remove a character, or replace a character. Given two strings, write a function to check if they are
+one edit (or zero edits) away.
+	static boolean oneAway(String a, String b) {
+		boolean oneDifference = false;
+		if (a.length() == b.length()) {
+			for (int i = 0; i < a.length(); i++) {
+				if (a.charAt(i) != b.charAt(i)) {
+					if (oneDifference) {
+						return false;
+					}
+					oneDifference = true;
+				}
+			}
+			return true;
+		} else if (a.length()+1 == b.length()) {
+			for (int i = 0; i<a.length(); i++) {
+				if (a.charAt(i) != b.charAt(i)) {
+					oneDifference = true;
+				}
+				if (oneDifference) {
+					if (a.charAt(i) !=b.charAt(i+1)) {
+						return false;
+					}
+				}
+			}
+			return true;
+		} else if (a.length()-1 == b.length()) {
+			for (int i = 0; i< a.length(); i++) {
+				if (!oneDifference) {
+					if (a.charAt(i) !=b.charAt(i)) {
+						oneDifference = true;
+					}
+				}
+				if (oneDifference) {
+					if (a.charAt(i) !=b.charAt(i-1)) {
+						return false;
+					}
+				}
+			}
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+6. Implement a method to perform basic string compression using the counts
+of repeated characters. For example, the string aabcccccaaa would become a2blc5a3. If the
+"compressed" string would not become smaller than the original string, your method should return
+the original string. You can assume the string has only uppercase and lowercase letters (a - z). 
 
