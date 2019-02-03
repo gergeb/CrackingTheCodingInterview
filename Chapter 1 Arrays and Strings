@@ -129,3 +129,34 @@ of repeated characters. For example, the string aabcccccaaa would become a2blc5a
 "compressed" string would not become smaller than the original string, your method should return
 the original string. You can assume the string has only uppercase and lowercase letters (a - z). 
 
+7. yeah we're coming back to number 7, so clsoe though
+
+static void rotate(int[][] image) {
+		for (int i = 0; i < image.length; i++) {
+			for (int j = 0; j < image.length; j++) {
+				 image[j][i] = image[i][image.length-1-j];
+			}
+		}
+	}
+	omg i jsut saw 1 brief glimpse of the answer and new where i went wrong
+		static int[][] rotate(int[][] image) {
+		int[][] rotated = new int[image.length][image.length];
+		for (int i = 0; i < image.length; i++) {
+			for (int j = 0; j < image.length; j++) {
+				 rotated[i][j] = image[j][image.length-1-i];
+			}
+		}
+		return rotated;
+	}
+	
+	here i went wrong, forgot to make a copy. As I was reassigning things it was messing up later reassignments.
+	This answer rotates it 90 degrees anti clockwise but w/e the question never specified which way so i guess  this is correct.
+
+8. Write an algorithm such that if an element in an MxN matrix is 0, its entire row and
+column are set to 0. 
+
+9.Assumeyou have a method isSubstringwhich checks if oneword is a substring
+of another. Given two strings, sl and s2, write code to check if s2 is a rotation of sl using only one
+call to isSubstring (e.g., "waterbottle" is a rotation of"erbottlewat"). 
+
+
